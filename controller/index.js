@@ -77,7 +77,8 @@ var renderTableNhanVien = function (mangNhanVien) {
                 <td>${nv.TinhLuong(nv.luongCoBan,nv.hesoChucVu(nv.chucVu))}</td>
                 <td>${nv.soGioLamTrongThang}</td>   
                 <td>${nv.XepLoaiNV(nv.soGioLamTrongThang)}</td>             
-                <td>                
+                <td>   
+                <button class="btn btn-danger mb-1" onclick="chinhSua('${nv.maNhanVien}')" >Chỉnh sửa</button>                                        
                 <button class="btn btn-danger" onclick="xoaNhanVien('${nv.maNhanVien}')" >Xoá</button>                           
                 </td>
             </tr>
@@ -129,6 +130,51 @@ window.xoaNhanVien = function (maNhanVien) {
 }
 renderNhanVien();
 
+window.chinhSua = function (maNhanVien) {
+    axios(
+        {
+            url: `http://svcy.myclass.vn/api/QuanLyNhanVienApi/LayThongTinNhanVien?maNhanVien=${maNhanVien}`,
+            method: 'GET',//do back end cung cap        
+        }
+    ).then(function (result) {
+        console.log('xu ly thanh cong', result.data);
+        var nv = result.data;
+        //Load lại lên control phía trên 
+        document.querySelector('#maNhanVien').value = nv.maNhanVien;
+        document.querySelector('#tenNhanVien').value = nv.tenNhanVien;
+        document.querySelector('#loaiChucVu').value = nv.chucVu;
+        document.querySelector('#luongCoBan').value = nv.luongCoBan;
+        document.querySelector('#soGioLam').value = nv.soGioLamTrongThang;        
+    }
+    ).catch(function (err) {
+        console.log('xu ly that bai', error);
+    }
+    );
+}
+
+document.querySelector('#btnCapNhat').onclick = function () {
+    var nv = new NhanVien();
+    //Load lại lên control phía trên 
+    nv.maNhanVien = document.querySelector('#maNhanVien').value;
+    nv.tenNhanVien = document.querySelector('#tenNhanVien').value;
+    nv.chucVu = document.querySelector('#loaiChucVu').value;
+    nv.luongCoBan = document.querySelector('#luongCoBan').value;
+    nv.soGioLamTrongThang = document.querySelector('#soGioLam').value;    
+
+    axios(
+        {
+            url: `http://svcy.myclass.vn/api/QuanlyNhanVienApi/CapNhatThongTinNhanVien?maNhanVien=${nv.maNhanVien}`,
+            method: 'PUT',//do back end cung cap  
+            data: nv
+        }
+    ).then(function (result) {
+        renderNhanVien();
+    }
+    ).catch(function (err) {
+        console.log('xu ly that bai', error.repsonse.data);
+    }
+    );
+}
 
 
 // // luu truc tiep tren may local
