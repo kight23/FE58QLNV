@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <!--Thông tin nhân viên input-->
+                <div class="card text-center">
+                    <div class="card-header bg-dark">
+                        <h3 class="text-center display-4 text-light">Quản lý nhân viên</h3>
+                    </div>
+                    <div class="card-body text-left">
+                        <div class="form-group">
+                            <p>Mã nhân viên</p>
+                            <input class="form-control" id="maNhanVien" />
+                            <p class="text-danger" id="kiemTraRong_maNhanVien"></p>
+                            <p class="text-danger" id="kiemTraSo_maNhanVien"></p>
+                            <p class="text-danger" id="kiemTraDoDai_maNhanVien"></p>
+                        </div>
+                        <div class="form-group">
+                            <p>Tên nhân viên</p>
+                            <input class="form-control" id="tenNhanVien" />
+                            <p class="text-danger" id="kiemTraRong_tenNhanVien"></p>
+                            <p class="text-danger" id="kiemTraChu_tenNhanVien"></p>
+                            <p class="text-danger" id="kiemTraDoDai_tenNhanVien"></p>
+                        </div>
+                        <div class="form-group">
+                            <p>Chức vụ</p>
+                            <select id="loaiChucVu" class="form-control">
+                                <option>Nhân viên</option>
+                                <option>Quản lý</option>
+                                <option>Giám đốc</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <p>Lương cơ bản</p>
+                            <input class="form-control" id="luongCoBan" />
+                            <p class="text-danger" id="kiemTraRong_luongCoBan"></p>
+                            <p class="text-danger" id="kiemTraSo_luongCoBan"></p>
+                            <p class="text-danger" id="kiemTraGiaTri_luongCoBan"></p>
+                            <p>Số giờ làm trong tháng</p>
+                            <input class="form-control" id="soGioLam" />
+                            <p class="text-danger" id="kiemTraRong_soGioLam"></p>
+                            <p class="text-danger" id="kiemTraSo_soGioLam"></p>
+                            <p class="text-danger" id="kiemTraGiaTri_soGioLam"></p>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="form-group">
+                            <button class="btn btn-success float-right" id="btnXacNhan">Thêm nhân viên</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <table class="table mb-5">
+            <thead class="bg-primary text-light">
+                <tr class="text-center">
+                    <th>Mã nhân viên</th>
+                    <th>Tên nhân viên</th>
+                    <th>Chức vụ</th>
+                    <th>Lương cơ bản</th>
+                    <th>Tổng lương</th>
+                    <th>Giờ làm\tháng</th>
+                    <th>Xếp loại nhân viên</th>
+                    <th></th>
+                </tr>
+            <tbody id="tblNhanVien">
+                <!-- <tr>
+                        <td>001</td>
+                        <td>Nguyễn văn a</td>
+                        <td>Khó khăn</td>
+                        <td>8.0</td>
+                        <td>10</td>
+                    </tr> -->
+            </tbody>
+            </thead>
+        </table>
+    </div>
+    <div id="data">
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+    <script src="./models/NhanVien.js"></script>
+    <script src="/models/Validation.js"></script>
+
+
+    <!-- <script src="./index.js"></script> -->
+    <script src="./controller/index.js"></script>
+    <!-- <script src="./controllers/indexOOP.js"></script> -->
+    <!-- <script src="./controllers/indexAjax.js"></script> -->
+</body>
+
+</html>
